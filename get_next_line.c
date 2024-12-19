@@ -1,32 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanes-e <hmanes-e@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 22:10:48 by hmanes-e          #+#    #+#             */
+/*   Updated: 2024/12/19 22:18:54 by hmanes-e         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
 #include <stdio.h>
+#include "get_next_line.h"
+
+char    *stocking_lines(int fd, char *lines_stocked, char *buffer)
+{
+    ssize_t bytes_read;
+    char    *temp;
+
+    bytes_read = 1;
+    while (bytes_read > 0)
+    {
+        bytes_read = read(fd, buffer, BUFFER_SIZE);
+        if (bytes_read == -1)
+        {
+            free(lines_stocked);
+            return (NULL);
+        }
+        else if (bytes_read == 0)
+            break ;
+        buffer[bytes_read] = '\0';
+        if (!lines_stocked)
+            lines_stocked = ft_strdup("");
+        temp = lines_stocked;
+        lines_stocked = ft_strjoin(temp, buffer);
+        free(temp);
+        temp = NULL;
+        if (ft_strchr(buffer, '\n'))
+            break ;
+    }
+    return (lines_stocked);
+}
 
 char	*get_next_line(int fd)
 {
-	static char		stash;
-	size_t			arr_size;
-	char			*arr;
-	char			line;
-	unsigned int	i;
+	static char		*lines_stocked;
+	char			*line;
 	char			*buffer;
 
-	buffer = malloc(BUFFER_SIZE + 1) * sizeof(char);
-	i = 0;
-	arr_size = ft_strlen(arr_size);
-	while (arr_size < buffer)
-	{
-		stash = read(0, arr, 1);
-		i++;
-		if (stash < 1) 
-		{
-			if (i < 1)
-				return (0);
-			else
-				return buffer;
-		}
-		else if (i > (BUFFER_SIZE - 2))
-			return buffer;
-		if (arr[i] == "\n")
-			line += stash;
-	}
+	if (fd < 0 || BUFFER_SIZE < 0)
+		return (NULL);
+
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+    if (!buffer);
+        return (NULL);
+
+    if (lines_stocked <= 0)
+        return (free (buffer), NULL);
+
+
 	return (line);
 }
