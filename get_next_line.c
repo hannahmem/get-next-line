@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmanes-e <hmanes-e@student.s19.be>         +#+  +:+       +#+        */
+/*   By: hmanes-e <hmanes-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:10:48 by hmanes-e          #+#    #+#             */
-/*   Updated: 2024/12/19 22:18:54 by hmanes-e         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:51:32 by hmanes-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ char	*get_next_line(int fd)
 {
 	static char		*lines_stocked;
 	char			*line;
-	char			*buffer;
+	char			buffer[BUFFER_SIZE];
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
     if (!buffer);
         return (NULL);
 
@@ -61,5 +60,5 @@ char	*get_next_line(int fd)
         return (free (buffer), NULL);
 
 
-	return (line);
+	return (line); // buffer 1 + buffer 2 + buffer 3
 }
