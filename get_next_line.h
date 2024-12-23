@@ -6,7 +6,7 @@
 /*   By: hmanes-e <hmanes-e@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 22:39:26 by hmanes-e          #+#    #+#             */
-/*   Updated: 2024/12/22 23:04:55 by hmanes-e         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:03:59 by hmanes-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
