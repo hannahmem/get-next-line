@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmanes-e <hmanes-e@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 22:39:26 by hmanes-e          #+#    #+#             */
-/*   Updated: 2024/12/25 17:27:40 by hmanes-e         ###   ########.fr       */
+/*   Created: 2024/12/25 18:09:37 by hmanes-e          #+#    #+#             */
+/*   Updated: 2024/12/25 18:10:49 by hmanes-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stddef.h>
 # include <fcntl.h>
@@ -20,8 +20,9 @@
 # include <string.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 8379999
+#  define BUFFER_SIZE 1024
 # endif
+# define FD_MAX 1024
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
