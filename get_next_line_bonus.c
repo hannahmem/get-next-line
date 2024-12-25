@@ -6,7 +6,7 @@
 /*   By: hmanes-e <hmanes-e@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:09:32 by hmanes-e          #+#    #+#             */
-/*   Updated: 2024/12/25 18:32:37 by hmanes-e         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:08:50 by hmanes-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ static char	*extract_line(char **lines_stocked)
 	{
 		line = line_content(*lines_stocked, i);
 		temp = *lines_stocked;
-		*lines_stocked = ft_strjoin(NULL, *lines_stocked + i + 1);
+		*lines_stocked = ft_strdup(*lines_stocked + i + 1);
 		free(temp);
 	}
 	else
 	{
-		line = ft_strjoin(NULL, *lines_stocked);
+		line = ft_strdup(*lines_stocked);
 		free(*lines_stocked);
 		*lines_stocked = NULL;
 	}
